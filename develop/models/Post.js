@@ -15,7 +15,7 @@ Gallery.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    conent: {
+    content: {
         type: DataTypes.TEXT,
         allowNull: false
     },
