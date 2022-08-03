@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const books = require('./content-routes');
+const contents = require('./content-routes');
 
 router.use('/contents', contents);
 
