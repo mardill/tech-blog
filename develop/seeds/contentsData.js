@@ -4,7 +4,7 @@ const contentdata = [
     {
         title: 'Tech Blogs are Great',
         body: 'Its great to read blogs',
-        publish_date: 'August 04, 2022 17:00:00'
+        publish_date: 'August 04, 2022'
     }
 ];
 

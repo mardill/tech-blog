@@ -1,10 +1,17 @@
 <!-- Loop over each object in the projects array -->
 {{#each contents as |content| }}
-<div>
-  <div class="content">
-    <h2>
-        {{title}}
-    </h2>
+<div class="main">
+    <div class="blog">
+        <div id="top">
+            <h2>
+                {{title}}
+            </h2>
+            <p>{{publish_date}}</p>
+        </div>
+        <div id="bottom">
+            <p>{{body}}</p>
+        </div>
 
+    </div>
 </div>
-{{/each}}
+    {{/each}}
