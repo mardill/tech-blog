@@ -18,6 +18,7 @@ router.get('/', async (req, res) => {
       const contents = contentsData.map(content => content.get({ plain: true }));
       res.render('homepage', {
         contents,
+        logged_in: req.session.logged_in 
       })
     })
     .catch(err => {
@@ -62,6 +63,35 @@ router.get('/', async (req, res) => {
 
   router.get('/signup', (req,res) => res.render('signup'))
 
+
+  router.get('/dashboard', async (req, res) => {
+
+    Content.findOne({
+  
+      attributes: [
+        'id',
+        'title',
+        'body',
+        'publish_date'
+      ],
+      include: [
+        { model: User, 
+        attributes: ['email','password']
+        }
+      ]
+    })
+      .then(contentsData => { 
+        const content = contentsData.get({ plain: true });
+        res.render('dashboard', {
+          content,
+        })
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+      })
+    
+    });
 
   router.get('/login', (req, res) => {
 
