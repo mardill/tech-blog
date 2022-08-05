@@ -5,12 +5,13 @@
         <div class="col-8" id="blog">
             <div id="top">
                 <h2>
-                    {{title}}
+                    {{content.title}}
                 </h2>
                 <p>{{format_date content.publish_date}}</p>
             </div>
             <div id="bottom">
-                <p>{{body}}</p>
+                <h4>Written by: {{content.user.email}}</h4>
+                <p>{{content.body}}</p>
             </div>
         </div>
         <div class="col-2" id="right"></div>

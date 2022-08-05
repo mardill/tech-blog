@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { rest } = require('lodash');
-const { Content } = require('../models');
+const { Content, User } = require('../models');
 
 router.get('/', async (req, res) => {
 
@@ -14,8 +14,8 @@ router.get('/', async (req, res) => {
       'publish_date'
     ]
   })
-    .then(contentData => {
-      const contents = contentData.map(content => content.get({ plain: true }));
+    .then(contentsData => {
+      const contents = contentsData.map(content => content.get({ plain: true }));
       res.render('homepage', {
         contents,
       })
@@ -39,15 +39,21 @@ router.get('/', async (req, res) => {
         'title',
         'body',
         'publish_date'
+      ],
+      include: [
+        { model: User, 
+        attributes: ['email','password']
+        }
       ]
     })
-      .then(contentData => { 
-        const contents = content.get({ plain: true });
+      .then(contentsData => { 
+        const content = contentsData.get({ plain: true });
         res.render('singlepost', {
-          contents,
+          content,
         })
       })
       .catch(err => {
+        console.log(err);
         res.status(500).json(err);
       })
     
@@ -56,7 +62,7 @@ router.get('/', async (req, res) => {
 
   router.get('/signup', (req,res) => res.render('signup'))
 
-  router.get('/login', (req,res) => res.render('login'))
+  // router.get('/login', (req,res) => res.render('login'))
 
 
   module.exports = router;
