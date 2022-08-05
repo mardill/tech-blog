@@ -26,6 +26,37 @@ router.get('/', async (req, res) => {
   
   });
 
+
+  router.get('/content/:id', async (req, res) => {
+
+    Content.findOne({
+  
+      where: {
+        id: req.params.id
+    },
+      attributes: [
+        'id',
+        'title',
+        'body',
+        'publish_date'
+      ]
+    })
+      .then(contentData => { 
+        const contents = content.get({ plain: true });
+        res.render('singlepost', {
+          contents,
+        })
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      })
+    
+    });
+  
+
   router.get('/signup', (req,res) => res.render('signup'))
+
+  router.get('/login', (req,res) => res.render('login'))
+
 
   module.exports = router;
