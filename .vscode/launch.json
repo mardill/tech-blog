@@ -5,23 +5,12 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "seed",
-            "program": "${workspaceFolder}/develop/seeds/index.js",
-            "request": "launch",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "cwd": "${workspaceFolder}/develop",
-            "type": "node"
-        },
-        {
             "type": "pwa-node",
             "request": "launch",
-            "name": "serve",
+            "name": "Launch Program",
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "cwd": "${workspaceFolder}",
             "program": "${workspaceFolder}/server.js"
         }
     ]
